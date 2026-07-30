@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile - ConvoPilot</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#03201a",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f4fafc",
+                    "primary-container": "#77cbb9",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#001f25",
+                    "surface-container-low": "#eff5f7",
+                    "tertiary-container": "#a4c2b8",
+                    "surface-variant": "#dee3e5",
+                    "inverse-primary": "#82d6c4",
+                    "background": "#f4fafc",
+                    "on-primary-container": "#00564a",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#bec9c5",
+                    "surface-tint": "#006b5c",
+                    "primary-fixed-dim": "#82d6c4",
+                    "secondary-fixed-dim": "#8ed1e1",
+                    "on-tertiary-container": "#355049",
+                    "surface-container-highest": "#dee3e5",
+                    "on-secondary-container": "#216b7a",
+                    "outline": "#6e7976",
+                    "tertiary": "#48645c",
+                    "tertiary-fixed-dim": "#afcdc3",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#a7eafb",
+                    "on-tertiary-fixed-variant": "#314c45",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#cae9df",
+                    "primary-fixed": "#9ef2df",
+                    "on-surface": "#161d1e",
+                    "surface-container": "#e9eff1",
+                    "surface-container-high": "#e3e9eb",
+                    "surface": "#f4fafc",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "primary": "#006b5c",
+                    "on-surface-variant": "#3e4946",
+                    "surface-dim": "#d5dbdd",
+                    "on-primary-fixed-variant": "#005045",
+                    "secondary-fixed": "#aaedfe",
+                    "on-secondary-fixed-variant": "#004e5b",
+                    "on-background": "#161d1e",
+                    "inverse-on-surface": "#ecf2f4",
+                    "secondary": "#1b6776",
+                    "on-primary-fixed": "#00201b",
+                    "inverse-surface": "#2b3133",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "stack-sm": "8px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "stack-lg": "32px",
+                    "container-max-width": "1200px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Manrope"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Manrope"],
+                    "headline-lg": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "label-md": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f4fafc; /* Silver base */
+            color: #161d1e; /* On-surface color */
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .profile-card-border {
+            border: 1px solid rgba(110, 121, 118, 0.1); /* 10% Granite opacity */
+        }
+        .active-indicator {
+            border-left: 2px solid #006b5c; /* Pearl Aqua accent */
+        }
+        /* Custom toggle switch */
+        .toggle-switch:checked + .toggle-bg {
+            background-color: #006b5c;
+        }
+        .toggle-switch:checked + .toggle-bg .toggle-dot {
+            transform: translateX(100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-background z-40 transition-shadow">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-sm w-full max-w-container-max-width mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-70">menu</span>
+<h1 class="font-display-lg text-headline-md tracking-tight text-primary">ConvoPilot</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a person named Alex Rivers, featuring a serene and intelligent expression. The lighting is soft and corporate, matching a clean tech aesthetic with a background of muted teal and silver. The style is minimalist and high-definition, reflecting a sophisticated productivity environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVHVNJ8kqoUBm_DnyQO0_bTv40gRCQJDQ7HPRmJF3ppXVaJAxt7zJbu1WcJC-j6tWnwxSTwTNrAUdBymNSQg4xzEzVfJK1trlc044XyUwcSb3SmZXqL_tpzPCXz9YNMDW5LXZ-8RYNQyfgfrWZcxW9Xs5HBRFOL3aIhYdqUmTi_yLWl45mZYH74hysLrbNP0TUO-T_Ubi6wWhcB9AudSZEtQxhQIpl-TAccf3JOrrgieeoL29VLgVFGQ"/>
+</div>
+</div>
+</header>
+<main class="max-w-[800px] mx-auto px-margin-mobile mt-stack-lg">
+<!-- Hero Profile Section -->
+<section class="flex flex-col items-center text-center mb-stack-lg">
+<div class="relative mb-stack-md">
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-primary-container/30">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of Alex Rivers for a profile page, set against a blurred minimalist office background with soft teal accents. The lighting is natural and diffuse, highlighting the professional and calm atmosphere of a deep-work productivity app. High-end photography style with precise focus and a clean, digital paper aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUvryQ4M-ud7dOnqE_Ho3gVhdrn0u69f9C_eZu1iYpgB0GGBnlM1dBeWom-exx8PLAQR4bFOXFv1hY3Fv7PZiRKZY7aSsVzLmuDShIakykIEQ9tR_1-J64YJU0Mgo4HYenZXr0Ws2nJPQXlm4ipig-_-19t_DhNvMfdmgkmczW0cUo2zK29t_RvZolChs9pxYCAIlRF1VaaM1NSUrNEMiuB3xhbSvNZE0_yz5N_ZgpEiduuN4Fa1dQvw"/>
+</div>
+<button class="absolute bottom-1 right-1 bg-primary text-on-primary p-2 rounded-full shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Alex Rivers</h2>
+<p class="text-on-surface-variant font-label-md">Senior Product Strategist</p>
+<div class="mt-stack-sm flex gap-2">
+<span class="bg-secondary-container/20 text-secondary px-3 py-1 rounded-lg font-label-sm">PRO PLAN</span>
+<span class="bg-primary-container/20 text-primary px-3 py-1 rounded-lg font-label-sm">VERIFIED</span>
+</div>
+</section>
+<!-- Profile Sections Grid -->
+<div class="space-y-stack-md">
+<!-- Quiet Mode Toggle (Hero Action) -->
+<div class="bg-surface-container-low p-stack-md rounded-xl profile-card-border flex items-center justify-between group hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">do_not_disturb_on</span>
+</div>
+<div>
+<h3 class="font-headline-md text-body-lg text-on-surface">Quiet Mode</h3>
+<p class="text-on-surface-variant text-label-sm">Silence all AI transcriptions and alerts</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only toggle-switch" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant rounded-full transition-colors toggle-bg relative">
+<div class="toggle-dot absolute left-0.5 top-0.5 bg-white w-5 h-5 rounded-full transition-transform duration-200"></div>
+</div>
+</label>
+</div>
+<!-- Account Settings -->
+<div class="bg-surface-container-low rounded-xl profile-card-border overflow-hidden">
+<div class="px-stack-md py-stack-sm border-b border-outline-variant/10">
+<h4 class="font-label-md text-primary tracking-widest">ACCOUNT</h4>
+</div>
+<div class="divide-y divide-outline-variant/10">
+<!-- Personal Info -->
+<div class="flex items-center justify-between p-stack-md active-indicator hover:bg-surface-container transition-all cursor-pointer group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">person</span>
+<span class="text-on-surface">Personal Information</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+<!-- Password -->
+<div class="flex items-center justify-between p-stack-md hover:bg-surface-container transition-all cursor-pointer group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">lock</span>
+<span class="text-on-surface">Password &amp; Security</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Notifications -->
+<div class="bg-surface-container-low rounded-xl profile-card-border overflow-hidden">
+<div class="px-stack-md py-stack-sm border-b border-outline-variant/10">
+<h4 class="font-label-md text-primary tracking-widest">PREFERENCES</h4>
+</div>
+<div class="divide-y divide-outline-variant/10">
+<!-- Notifications Link -->
+<div class="flex items-center justify-between p-stack-md hover:bg-surface-container transition-all cursor-pointer group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">notifications</span>
+<span class="text-on-surface">Notification Preferences</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+<!-- Voice Sensitivity -->
+<div class="flex items-center justify-between p-stack-md hover:bg-surface-container transition-all cursor-pointer group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">graphic_eq</span>
+<span class="text-on-surface">Voice Notes Sensitivity</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-sm text-on-surface-variant">High</span>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Danger Zone -->
+<div class="mt-stack-lg pt-stack-sm">
+<button class="w-full flex items-center justify-center gap-2 p-stack-md border border-error/20 rounded-xl text-error font-label-md hover:bg-error-container/10 transition-colors">
+<span class="material-symbols-outlined">logout</span>
+                    LOGOUT
+                </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-16 px-margin-mobile bg-surface-container dark:bg-surface-container-highest border-t border-outline-variant/10">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-on-surface-variant/10 transition-all active:scale-95 duration-150 flex-1 h-full" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<!-- Todo -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-on-surface-variant/10 transition-all active:scale-95 duration-150 flex-1 h-full" href="#">
+<span class="material-symbols-outlined">checklist</span>
+<span class="font-label-md text-label-md">Todo</span>
+</a>
+<!-- Voice Notes -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-on-surface-variant/10 transition-all active:scale-95 duration-150 flex-1 h-full" href="#">
+<span class="material-symbols-outlined">mic</span>
+<span class="font-label-md text-label-md">Voice Notes</span>
+</a>
+<!-- Profile (Active) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim border-l-2 border-primary dark:border-primary-fixed-dim bg-primary-container/20 transition-all active:scale-95 duration-150 flex-1 h-full" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction: Toggle Visual Feedback
+        const toggles = document.querySelectorAll('.toggle-switch');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                const parent = this.closest('.bg-surface-container-low');
+                if(this.checked) {
+                    parent.style.borderColor = 'rgba(0, 107, 92, 0.2)';
+                } else {
+                    parent.style.borderColor = 'rgba(110, 121, 118, 0.1)';
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-sm', 'bg-white/90', 'backdrop-blur-md');
+            } else {
+                header.classList.remove('shadow-sm', 'bg-white/90', 'backdrop-blur-md');
+            }
+        });
+    </script>
+</body></html>

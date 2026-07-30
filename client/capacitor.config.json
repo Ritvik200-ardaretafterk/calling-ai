@@ -1,0 +1,8 @@
+{
+  "appId": "com.convopilot.app",
+  "appName": "ConvoPilot",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "http"
+  }
+}

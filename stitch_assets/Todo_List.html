@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#03201a",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f4fafc",
+                        "primary-container": "#77cbb9",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#001f25",
+                        "surface-container-low": "#eff5f7",
+                        "tertiary-container": "#a4c2b8",
+                        "surface-variant": "#dee3e5",
+                        "inverse-primary": "#82d6c4",
+                        "background": "#f4fafc",
+                        "on-primary-container": "#00564a",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#bec9c5",
+                        "surface-tint": "#006b5c",
+                        "primary-fixed-dim": "#82d6c4",
+                        "secondary-fixed-dim": "#8ed1e1",
+                        "on-tertiary-container": "#355049",
+                        "surface-container-highest": "#dee3e5",
+                        "on-secondary-container": "#216b7a",
+                        "outline": "#6e7976",
+                        "tertiary": "#48645c",
+                        "tertiary-fixed-dim": "#afcdc3",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#a7eafb",
+                        "on-tertiary-fixed-variant": "#314c45",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#cae9df",
+                        "primary-fixed": "#9ef2df",
+                        "on-surface": "#161d1e",
+                        "surface-container": "#e9eff1",
+                        "surface-container-high": "#e3e9eb",
+                        "surface": "#f4fafc",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "primary": "#006b5c",
+                        "on-surface-variant": "#3e4946",
+                        "surface-dim": "#d5dbdd",
+                        "on-primary-fixed-variant": "#005045",
+                        "secondary-fixed": "#aaedfe",
+                        "on-secondary-fixed-variant": "#004e5b",
+                        "on-background": "#161d1e",
+                        "inverse-on-surface": "#ecf2f4",
+                        "secondary": "#1b6776",
+                        "on-primary-fixed": "#00201b",
+                        "inverse-surface": "#2b3133",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "stack-sm": "8px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "stack-lg": "32px",
+                        "container-max-width": "1200px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "label-md": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #f4fafc;
+            color: #161d1e;
+        }
+        .task-list-item {
+            border-bottom: 1px solid #dee3e5;
+            transition: all 0.2s ease;
+        }
+        .task-list-item:hover {
+            background-color: rgba(0, 107, 92, 0.04);
+        }
+        .overdue-accent {
+            border-left: 2px solid #ba1a1a;
+        }
+        .today-accent {
+            border-left: 2px solid #006b5c;
+        }
+        .later-accent {
+            border-left: 2px solid #6e7976;
+        }
+        .custom-checkbox {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #6e7976;
+            border-radius: 2px;
+            cursor: pointer;
+            position: relative;
+            background: transparent;
+        }
+        .custom-checkbox:checked {
+            background-color: #006b5c;
+            border-color: #006b5c;
+        }
+        .custom-checkbox:checked::after {
+            content: 'check';
+            font-family: 'Material Symbols Outlined';
+            font-size: 14px;
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .glass-header {
+            backdrop-filter: blur(8px);
+            background-color: rgba(244, 250, 252, 0.85);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-background glass-header">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-sm w-full max-w-container-max-width mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-70">menu</span>
+<h1 class="font-display-lg text-headline-md tracking-tight text-primary">ConvoPilot</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant cursor-pointer active:opacity-70">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist high-key profile portrait of a modern professional in a light-filled workspace. The background is a soft blend of white and silver, emphasizing clarity and focus. The lighting is bright and even, reinforcing the quiet focus and corporate minimalism aesthetic of the brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKU45Og5ODXzvoAnFznDoqbCsLrySqY2-oYCN6QC851-SpxOm2iuuMrDexgMiMwxHalCa0C8t5-4Vgj4GIqgvEae82zU8V-7K8q7iYObvQd_5GBnjWbrwXEAnucCvwqZ-mhE0BX5eo58utMEs1wu6iFDk3DQlB5ve4ZnSyG1HP89uIFvG75FhBI5Glzi8SnHy739c_CeeabPB1LHtDozDFSyOLPowI_CSTI56dBgE9BgvnGLFb4nrsYg"/>
+</div>
+</div>
+</header>
+<main class="max-w-[800px] mx-auto px-margin-mobile md:px-margin-desktop pt-8 pb-32">
+<!-- Welcome/Stats Header -->
+<section class="mb-10">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">My Tasks</h2>
+<p class="text-on-surface-variant font-body-md">You have 3 items overdue. Let's clear your head.</p>
+</section>
+<!-- Search & Filter Bar -->
+<div class="flex items-center gap-4 mb-10 border-b border-outline-variant/30 pb-2">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 placeholder:text-outline text-body-md" placeholder="Find a task..." type="text"/>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">tune</span>
+</div>
+<!-- CATEGORY: OVERDUE -->
+<section class="mb-10">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-label-md text-label-md text-error flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">priority_high</span>
+                    OVERDUE
+                </h3>
+<span class="font-label-sm text-label-sm text-outline">3 TASKS</span>
+</div>
+<div class="flex flex-col">
+<!-- Task Item -->
+<div class="task-list-item overdue-accent p-4 flex items-start gap-4">
+<input class="custom-checkbox mt-1" type="checkbox"/>
+<div class="flex-1">
+<p class="text-on-surface font-body-md font-medium">Review Q3 Revenue Projections</p>
+<div class="flex gap-4 mt-1">
+<span class="text-label-sm font-label-sm text-error">Yesterday, 5:00 PM</span>
+<span class="text-label-sm font-label-sm text-secondary bg-secondary-container/30 px-2 rounded">Finance</span>
+</div>
+</div>
+</div>
+<!-- Task Item -->
+<div class="task-list-item overdue-accent p-4 flex items-start gap-4">
+<input class="custom-checkbox mt-1" type="checkbox"/>
+<div class="flex-1">
+<p class="text-on-surface font-body-md font-medium">Send follow-up to Client Alpha</p>
+<div class="flex gap-4 mt-1">
+<span class="text-label-sm font-label-sm text-error">May 12, 10:00 AM</span>
+<span class="text-label-sm font-label-sm text-secondary bg-secondary-container/30 px-2 rounded">Sales</span>
+</div>
+</div>
+</div>
+<!-- Task Item -->
+<div class="task-list-item overdue-accent p-4 flex items-start gap-4">
+<input class="custom-checkbox mt-1" type="checkbox"/>
+<div class="flex-1">
+<p class="text-on-surface font-body-md font-medium">Weekly Team Sync Notes</p>
+<div class="flex gap-4 mt-1">
+<span class="text-label-sm font-label-sm text-error">Monday</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CATEGORY: TODAY -->
+<section class="mb-10">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-label-md text-label-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">today</span>
+                    TODAY
+                </h3>
+<span class="font-label-sm text-label-sm text-outline">2 TASKS</span>
+</div>
+<div class="flex flex-col">
+<div class="task-list-item today-accent p-4 flex items-start gap-4">
+<input class="custom-checkbox mt-1" type="checkbox"/>
+<div class="flex-1">
+<p class="text-on-surface font-body-md font-medium">Draft board meeting presentation</p>
+<div class="flex gap-4 mt-1">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Due 4:00 PM</span>
+<span class="text-label-sm font-label-sm text-tertiary bg-tertiary-container/20 px-2 rounded">Strategy</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">star</span>
+</div>
+<div class="task-list-item today-accent p-4 flex items-start gap-4">
+<input class="custom-checkbox mt-1" type="checkbox"/>
+<div class="flex-1">
+<p class="text-on-surface font-body-md font-medium">Renew software licenses</p>
+<div class="flex gap-4 mt-1">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Today</span>
+<span class="text-label-sm font-label-sm text-secondary bg-secondary-container/30 px-2 rounded">Operations</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CATEGORY: LATER -->
+<section class="mb-10">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+                    LATER
+                </h3>
+<span class="font-label-sm text-label-sm text-outline">1 TASK</span>
+</div>
+<div class="flex flex-col">
+<div class="task-list-item later-accent p-4 flex items-start gap-4 opacity-75">
+<input class="custom-checkbox mt-1" type="checkbox"/>
+<div class="flex-1">
+<p class="text-on-surface font-body-md font-medium">Plan annual company retreat</p>
+<div class="flex gap-4 mt-1">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Next Month</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Empty State Hint (Hidden by default, for demo logic) -->
+<div class="hidden flex-col items-center justify-center py-20 text-center" id="empty-state">
+<span class="material-symbols-outlined text-primary/20 text-6xl mb-4">task_alt</span>
+<h4 class="font-headline-md text-headline-md text-on-surface-variant">All Caught Up</h4>
+<p class="text-on-surface-variant">Your mind is clear. Enjoy the focus.</p>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-margin-mobile md:right-margin-desktop w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-all duration-150 z-50">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-16 px-margin-mobile bg-surface-container border-t border-outline-variant/10">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-all px-4 py-1 rounded active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md mt-0.5">Home</span>
+</a>
+<!-- Todo (ACTIVE) -->
+<a class="flex flex-col items-center justify-center text-primary border-l-2 border-primary bg-primary-container/20 hover:bg-surface-variant transition-all px-4 py-1 rounded active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">checklist</span>
+<span class="font-label-md text-label-md mt-0.5">Todo</span>
+</a>
+<!-- Voice Notes -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-all px-4 py-1 rounded active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">mic</span>
+<span class="font-label-md text-label-md mt-0.5">Voice Notes</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-all px-4 py-1 rounded active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md mt-0.5">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for task completion
+        document.querySelectorAll('.custom-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const parent = this.closest('.task-list-item');
+                if (this.checked) {
+                    parent.style.opacity = '0.4';
+                    parent.style.textDecoration = 'line-through';
+                    // Optional: remove after timeout
+                    setTimeout(() => {
+                        // In a real app, this would trigger a state update
+                        console.log('Task completed');
+                    }, 1000);
+                } else {
+                    parent.style.opacity = '1';
+                    parent.style.textDecoration = 'none';
+                }
+            });
+        });
+
+        // Simple sticky header effect on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.glass-header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-sm');
+            } else {
+                header.classList.remove('shadow-sm');
+            }
+        });
+    </script>
+</body></html>

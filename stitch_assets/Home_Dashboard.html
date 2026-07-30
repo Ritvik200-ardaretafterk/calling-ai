@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ConvoPilot - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#03201a",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f4fafc",
+                    "primary-container": "#77cbb9",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#001f25",
+                    "surface-container-low": "#eff5f7",
+                    "tertiary-container": "#a4c2b8",
+                    "surface-variant": "#dee3e5",
+                    "inverse-primary": "#82d6c4",
+                    "background": "#f4fafc",
+                    "on-primary-container": "#00564a",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#bec9c5",
+                    "surface-tint": "#006b5c",
+                    "primary-fixed-dim": "#82d6c4",
+                    "secondary-fixed-dim": "#8ed1e1",
+                    "on-tertiary-container": "#355049",
+                    "surface-container-highest": "#dee3e5",
+                    "on-secondary-container": "#216b7a",
+                    "outline": "#6e7976",
+                    "tertiary": "#48645c",
+                    "tertiary-fixed-dim": "#afcdc3",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#a7eafb",
+                    "on-tertiary-fixed-variant": "#314c45",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#cae9df",
+                    "primary-fixed": "#9ef2df",
+                    "on-surface": "#161d1e",
+                    "surface-container": "#e9eff1",
+                    "surface-container-high": "#e3e9eb",
+                    "surface": "#f4fafc",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "primary": "#006b5c",
+                    "on-surface-variant": "#3e4946",
+                    "surface-dim": "#d5dbdd",
+                    "on-primary-fixed-variant": "#005045",
+                    "secondary-fixed": "#aaedfe",
+                    "on-secondary-fixed-variant": "#004e5b",
+                    "on-background": "#161d1e",
+                    "inverse-on-surface": "#ecf2f4",
+                    "secondary": "#1b6776",
+                    "on-primary-fixed": "#00201b",
+                    "inverse-surface": "#2b3133",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "stack-sm": "8px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "stack-lg": "32px",
+                    "container-max-width": "1200px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Manrope"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Manrope"],
+                    "headline-lg": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "label-md": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            background-color: #f4fafc;
+            color: #161d1e;
+            -webkit-font-smoothing: antialiased;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .active-left-border {
+            border-left: 2px solid #006b5c;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(110, 121, 118, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-40 bg-background dark:bg-background">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-sm w-full max-w-container-max-width mx-auto">
+<div class="flex items-center gap-4">
+<div class="cursor-pointer active:opacity-70">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">menu</span>
+</div>
+<h1 class="font-display-lg text-headline-md tracking-tight text-primary dark:text-primary-fixed-dim">ConvoPilot</h1>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex items-center gap-8 font-label-md text-label-md">
+<a class="text-primary dark:text-primary-fixed-dim cursor-pointer transition-colors duration-200" href="#">Dashboard</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200" href="#">Library</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200" href="#">Settings</a>
+</nav>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold overflow-hidden cursor-pointer active:opacity-70">
+<img class="w-full h-full object-cover" data-alt="Close-up professional portrait of a tech executive with a friendly expression, soft studio lighting, clean minimalist background, muted corporate color palette with teal accents, high quality photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6qYk8WV157UdREHidqBY73gYvQNODEERJH4aZR_ptZXmjuPWGPMZ5Ikh3vQaeiZ7IBVXTwCBKLJPMt56gHjjrtdxUcTsCuNOOrnWs8uwNscAXpvhCBGKTQLPf5sn73EnhmDcWHrDCSAvjyKIQmZbxJ9yXv714yHhCekuns_InhQ4Zc6LuAdaUtqgSgbi-NUO4bBCYwKOixvDhXUuyEW4NEtol2XeqWJbdYBLRkncPM1eT2cGtot8ndg"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop pt-8 pb-32">
+<!-- Welcome Summary -->
+<section class="mb-stack-lg">
+<h2 class="font-display-lg text-headline-lg md:text-display-lg text-on-surface mb-2">Good morning, Alex.</h2>
+<p class="text-on-surface-variant text-body-lg max-w-2xl">You have 4 meetings today. Your first one starts in 15 minutes. We've prepared your context notes for the Design Review.</p>
+</section>
+<!-- Main Bento Content -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Live Meeting Quick Action (Hero Card) -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-xl glass-card p-stack-lg border-primary/20 bg-gradient-to-br from-surface-container-low to-surface-container-high transition-all hover:border-primary/40">
+<div class="relative z-10 flex flex-col h-full justify-between gap-8">
+<div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-primary/10 text-primary mb-6">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Ready to record</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-4">Start a Live Session</h3>
+<p class="text-on-surface-variant max-w-md">Instantly capture audio, generate real-time transcripts, and get AI-powered insights for your unscheduled conversations.</p>
+</div>
+<button class="w-fit flex items-center gap-3 bg-primary text-on-primary px-8 py-4 rounded-lg font-label-md text-label-md hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mic</span>
+                        GO LIVE NOW
+                    </button>
+</div>
+<!-- Abstract visual element -->
+<div class="absolute -right-12 -bottom-12 w-64 h-64 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[180px] text-primary">waves</span>
+</div>
+</div>
+<!-- Next Up Preview -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<div class="rounded-xl glass-card p-stack-md active-left-border">
+<div class="flex justify-between items-start mb-6">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Upcoming • 10:30 AM</span>
+<span class="material-symbols-outlined text-on-surface-variant">calendar_today</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-2">Q3 Product Strategy</h4>
+<div class="flex -space-x-2 mb-6">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-on-primary-fixed-variant flex items-center justify-center text-[10px] text-white">JD</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-secondary flex items-center justify-center text-[10px] text-white">MK</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-tertiary flex items-center justify-center text-[10px] text-white">SR</div>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant/10">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1">AI Context Prep:</p>
+<p class="text-body-md text-on-surface italic">"Discussing the new mobile roadmap and budget allocation for H2."</p>
+</div>
+</div>
+<!-- Stats/Quick View -->
+<div class="rounded-xl glass-card p-stack-md flex items-center justify-between">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Captured Today</p>
+<p class="text-headline-md font-bold text-on-surface">124 mins</p>
+</div>
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">trending_up</span>
+</div>
+</div>
+</div>
+<!-- Recent Highlights (Wide Section) -->
+<div class="md:col-span-12 mt-4">
+<div class="flex justify-between items-end mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Recent Highlights</h3>
+<button class="text-primary font-label-md text-label-md hover:underline decoration-2 underline-offset-4">View All Notes</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Note Card 1 -->
+<div class="glass-card p-6 rounded-lg border-outline-variant/10 hover:border-primary/20 transition-colors group">
+<div class="flex justify-between mb-4">
+<span class="px-2 py-1 bg-secondary-container/30 text-secondary font-label-sm text-[10px] rounded uppercase">Meeting Note</span>
+<span class="text-on-surface-variant text-sm">Yesterday</span>
+</div>
+<h5 class="font-headline-md text-body-lg text-on-surface mb-3 group-hover:text-primary transition-colors">Client Onboarding: Stellar Tech</h5>
+<p class="text-on-surface-variant text-body-md line-clamp-2 mb-4">Action items include setting up the API keys and finalizing the contract by Friday...</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-surface-container rounded text-label-sm text-[10px] text-on-surface-variant">#strategy</span>
+<span class="px-2 py-1 bg-surface-container rounded text-label-sm text-[10px] text-on-surface-variant">#onboarding</span>
+</div>
+</div>
+<!-- Note Card 2 -->
+<div class="glass-card p-6 rounded-lg border-outline-variant/10 hover:border-primary/20 transition-colors group">
+<div class="flex justify-between mb-4">
+<span class="px-2 py-1 bg-tertiary-container/30 text-tertiary font-label-sm text-[10px] rounded uppercase">Voice Memo</span>
+<span class="text-on-surface-variant text-sm">2 days ago</span>
+</div>
+<h5 class="font-headline-md text-body-lg text-on-surface mb-3 group-hover:text-primary transition-colors">Personal Brainstorm: App UI</h5>
+<p class="text-on-surface-variant text-body-md line-clamp-2 mb-4">Thinking about a more spatial approach to the dashboard layout using bento grids...</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-surface-container rounded text-label-sm text-[10px] text-on-surface-variant">#ideas</span>
+</div>
+</div>
+<!-- Note Card 3 (Placeholder for high-end feel) -->
+<div class="relative overflow-hidden rounded-lg bg-primary h-full min-h-[160px] flex flex-col justify-center items-center text-on-primary p-6 text-center cursor-pointer group">
+<div class="absolute inset-0 bg-black/10 transition-transform group-hover:scale-105 duration-500">
+<img class="w-full h-full object-cover opacity-30" data-alt="A tranquil and professional digital abstract background with soft teal and blue gradients, subtle geometric textures, and a clean minimalist aesthetic representing focused productivity and calm intelligence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAasuG7ZdetgMsWzH-AQn0_TTsIFhfRgCYiPNNBRtZEt8_0tp_XXZ-yyUYBllFynKSBARjc4WdycuxBLMTsZ93nbXqRR-Lkz9Qxc0XsLMpQyni_BcOGk184DB5jmruQHBU51rfie_QgMCvD4jsyEAWNdsDRdR-dPy53ZLtuOU1KoYS6kLq8JOMLcm2tR6UW7YDO4-8J2u0OHny8296sisvvNRtUwGyM80P7xvQ_BYxtv0sRyzjjQGQmhw"/>
+</div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-4xl mb-2">add_circle</span>
+<p class="font-label-md text-label-md">Create New Collection</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Active: Home) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-16 px-margin-mobile bg-surface-container dark:bg-surface-container-highest border-t border-outline-variant/10 shadow-lg md:hidden">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim border-l-2 border-primary dark:border-primary-fixed-dim bg-primary-container/20 flex-1 h-full transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<!-- Todo -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant flex-1 h-full hover:bg-surface-variant dark:hover:bg-on-surface-variant/10 transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">checklist</span>
+<span class="font-label-md text-label-md">Todo</span>
+</a>
+<!-- Voice Notes -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant flex-1 h-full hover:bg-surface-variant dark:hover:bg-on-surface-variant/10 transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">mic</span>
+<span class="font-label-md text-label-md">Voice Notes</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant flex-1 h-full hover:bg-surface-variant dark:hover:bg-on-surface-variant/10 transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+                card.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0px)';
+            });
+        });
+
+        // Dynamic greeting based on time of day
+        const updateGreeting = () => {
+            const hour = new Date().getHours();
+            const greetingElement = document.querySelector('h2');
+            if (hour < 12) greetingElement.innerText = 'Good morning, Alex.';
+            else if (hour < 18) greetingElement.innerText = 'Good afternoon, Alex.';
+            else greetingElement.innerText = 'Good evening, Alex.';
+        };
+        updateGreeting();
+    </script>
+</body></html>

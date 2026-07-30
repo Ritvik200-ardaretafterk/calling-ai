@@ -1,0 +1,29 @@
+{
+    "name": "convopilot-client",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite --host 0.0.0.0",
+        "build": "vite build",
+        "lint": "vite build",
+        "preview": "vite preview --host 0.0.0.0"
+    },
+    "dependencies": {
+        "@capacitor/android": "^8.4.2",
+        "@capacitor/core": "^8.4.2",
+        "@supabase/supabase-js": "^2.111.0",
+        "axios": "^1.7.2",
+        "lucide-react": "^0.395.0",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "zustand": "^4.5.2"
+    },
+    "devDependencies": {
+        "@capacitor/cli": "^8.4.2",
+        "@types/react": "^18.3.3",
+        "@types/react-dom": "^18.3.0",
+        "@vitejs/plugin-react": "^4.3.1",
+        "vite": "^5.3.1"
+    }
+}
